@@ -24,6 +24,8 @@ $ git clone https://github.com/skaail/Avanade_Desafio.git
 $ docker info
 ```
 
+3. Certifique-se que o Docker se encontra rodando na máquina
+
 3. Rodar o projeto dentro do Eclipse ou InteliJ
 
 # Documentação API
