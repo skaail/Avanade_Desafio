@@ -18,6 +18,11 @@ public class HeroiController {
         return service.listarHerois();
     }
 
+    @GetMapping("/{id}")
+    public Heroi buscarHeroiId(@PathVariable Long id){
+        return service.buscarHeroiPorId(id);
+    }
+
     @PostMapping
     public ResponseEntity<String> criarHeroi(@RequestBody Heroi heroi){
         if(service.criarHeroi(heroi) == null){

@@ -1,12 +1,15 @@
 package br.com.avanade.DesafioRpg.Batalha;
 
 import br.com.avanade.DesafioRpg.Heroi.Heroi;
+import br.com.avanade.DesafioRpg.Heroi.HeroiRepository;
 import br.com.avanade.DesafioRpg.Heroi.HeroiService;
 import br.com.avanade.DesafioRpg.Historico.Historico;
 import br.com.avanade.DesafioRpg.Historico.HistoricoService;
 import br.com.avanade.DesafioRpg.Monstro.Monstro;
+import br.com.avanade.DesafioRpg.Monstro.MonstroRepository;
 import br.com.avanade.DesafioRpg.Monstro.MonstroService;
 import br.com.avanade.DesafioRpg.Turno.Turno;
+import br.com.avanade.DesafioRpg.Turno.TurnoRepository;
 import br.com.avanade.DesafioRpg.Turno.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +29,15 @@ public class BatalhaController {
 
     @Autowired
     private BatalhaRepository repository;
+
+    @Autowired
+    private HeroiRepository heroiRepository;
+
+    @Autowired
+    private MonstroRepository monstroRepository;;
+
+    @Autowired
+    private TurnoRepository turnoRepository;
 
     @Autowired
     private HeroiService heroiService;
@@ -136,5 +148,15 @@ public class BatalhaController {
     @GetMapping("/historico")
     public ResponseEntity<List<Historico>> consultarHistorico() {
         return ResponseEntity.ok(historicoService.listarHistorico());
+    }
+
+    @PostMapping("/reiniciar")
+    public ResponseEntity<String> reiniciarAventura(){
+        turnoRepository.deleteAll();
+        monstroRepository.deleteAll();
+        heroiRepository.deleteAll();
+        repository.deleteAll();
+
+        return ResponseEntity.ok("Aventura reiniciada");
     }
 }
