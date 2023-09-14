@@ -230,8 +230,18 @@ O Gigante atacou o Guerreiro causando 4 de dano! Agora ele tem 16 de vida!
 ```
 </details>
 
+<details>
+ <summary><code>POST</code> <code><b>/batalha/reiniciar</b></code> <code>(Reinicia a aventura)</code></summary>
+
+##### Response
+```
+Aventura reiniciada
+```
+
+</details>
+
 ## Regras do jogo
 
 * Se um monstro morrer ao iniciar outra batalha deve se passar o id do novo monstro gerado
 * Só pode ser criado um Heroi
-* Caso o Heroi fique com 0 de vida o jogo é finalizado, para começar um novo reinicie a aplicação
+* Caso o Heroi fique com 0 de vida o jogo é finalizado, para começar um novo faça um post na roda localhost>8080/api/batalha/reiniciar
